@@ -6,14 +6,17 @@ package za.ac.cput.factory.employee;
         Date :June 2022
         */
 
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import za.ac.cput.domain.employee.Employee;
 import za.ac.cput.domain.identity.Name;
 import za.ac.cput.factory.identity.NameFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class  EmployeeFactoryTest {
 
     private Employee employee;
@@ -32,7 +35,7 @@ class  EmployeeFactoryTest {
 
     @Order(2)
     @Test
-    void testNoStaffId() {
+    void testNoStaffId() {  //no staff ID- STAFF ID is empty
         Exception exception = assertThrows(IllegalArgumentException.class, () ->
                 EmployeeFactory.createEmployee("", "lefukumeke@gmail.com", name));
         String exceptionMessage =  exception.getMessage();
